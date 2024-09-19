@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jQuery Drum Kit</title>
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
     <div class="keys" tabindex="1">
         <div data-key="65" class="key">
             <kbd>A</kbd>
@@ -41,11 +42,12 @@
             <kbd>K</kbd>
             <span class="sound">tom</span>
         </div>
-        <div data-key=""="76" class="key">
+        <div data-key="76" class="key">
             <kbd>L</kbd>
             <span class="sound">tink</span>
         </div>
     </div>
+
     <audio data-key="65" src="sounds/clap.wav"></audio>
     <audio data-key="83" src="sounds/hihat.wav"></audio>
     <audio data-key="68" src="sounds/kick.wav"></audio>
@@ -55,31 +57,5 @@
     <audio data-key="74" src="sounds/snare.wav"></audio>
     <audio data-key="75" src="sounds/tom.wav"></audio>
     <audio data-key="76" src="sounds/tink.wav"></audio>
-
-    <script src='http://code.jquery.com/jquery-2.2.4.min.js'></script>
-    <script>
-        $(function() {
-            $(this).keydown(function(event) {
-                var key = $(this).find('.key[data-key='+event.which+']');
-
-                var audio = $(this).find('.key[data-key='+event.which+']')[0];
-
-                key.toggleClass('playing');
-
-                if (!audio) return;
-
-                audio.play();
-
-                audio.currentTime = 0;
-            }); 
-            
-            $(this).keyup(function(event) {
-
-                var key = $(this).find('.key[data-key='+event.which+']');
-
-                key.toggleClass('playing');
-            });
-        });
-    </script>
 </body>
 </html>
